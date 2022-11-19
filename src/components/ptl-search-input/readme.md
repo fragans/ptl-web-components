@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property | Attribute | Description | Type     | Default                                      |
+| -------- | --------- | ----------- | -------- | -------------------------------------------- |
+| `apiUrl` | `api-url` |             | `string` | `"https://dummyjson.com/products/search?q="` |
+
+
 ## Events
 
 | Event            | Description | Type                |
@@ -14,4 +21,4 @@
 
 ----------------------------------------------
 
-*Terbikin oleh tim front-end kompas.id*
+*by fragans*

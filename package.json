@@ -1,6 +1,6 @@
 {
   "name": "@fragans/ptl-web-components",
-  "version": "0.3.5-alpha-67",
+  "version": "0.0.1",
   "description": "pivot the label reusable web components",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",

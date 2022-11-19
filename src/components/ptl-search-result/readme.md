@@ -7,4 +7,4 @@
 
 ----------------------------------------------
 
-*Terbikin oleh tim front-end kompas.id*
+*by fragans*
