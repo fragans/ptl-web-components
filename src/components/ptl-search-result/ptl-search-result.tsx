@@ -40,7 +40,7 @@ export class PtlSearchResult {
     return items.map( (item) => {
       return (
         <a href="#" class="card relative">
-          <div class="bg-cover bg-center" style={{backgroundImage: `url(${item.thumbnail})`, paddingBottom: '145%'}}></div>
+          <div class="bg-cover bg-center bg-gray-200" style={{backgroundImage: `url(${item.thumbnail})`, paddingBottom: '145%'}}></div>
           <div class="absolute bottom-0 w-full py-3 flex flex-col justify-center text-center text-primary bg-secondary">
             <p class="font-bold">{item.title}</p>
             <p>Rp. {item.price}</p>
@@ -51,11 +51,10 @@ export class PtlSearchResult {
     )
   }
   templateTitle () {
-    const title = 'Hasil Pencarian'
     return (
       <div>
         <h2 class="underline capitalize font-bold text-xl text-primary">
-          { !this.emptyState ?'produk kami':  title}
+          { this.emptyState || !this.products.length ? '':  'produk kami'}
         </h2>
       </div>
     )

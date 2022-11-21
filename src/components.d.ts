@@ -11,8 +11,10 @@ export namespace Components {
     }
     interface PtlSearchResult {
     }
-    interface PtlWidgetRecommendation {
-        "apiUrl": string;
+    interface PtlWidgetProducts {
+        "apiHost": string;
+        "limitProducts": string;
+        "widgetTitle": string;
     }
 }
 export interface PtlSearchInputCustomEvent<T> extends CustomEvent<T> {
@@ -32,16 +34,16 @@ declare global {
         prototype: HTMLPtlSearchResultElement;
         new (): HTMLPtlSearchResultElement;
     };
-    interface HTMLPtlWidgetRecommendationElement extends Components.PtlWidgetRecommendation, HTMLStencilElement {
+    interface HTMLPtlWidgetProductsElement extends Components.PtlWidgetProducts, HTMLStencilElement {
     }
-    var HTMLPtlWidgetRecommendationElement: {
-        prototype: HTMLPtlWidgetRecommendationElement;
-        new (): HTMLPtlWidgetRecommendationElement;
+    var HTMLPtlWidgetProductsElement: {
+        prototype: HTMLPtlWidgetProductsElement;
+        new (): HTMLPtlWidgetProductsElement;
     };
     interface HTMLElementTagNameMap {
         "ptl-search-input": HTMLPtlSearchInputElement;
         "ptl-search-result": HTMLPtlSearchResultElement;
-        "ptl-widget-recommendation": HTMLPtlWidgetRecommendationElement;
+        "ptl-widget-products": HTMLPtlWidgetProductsElement;
     }
 }
 declare namespace LocalJSX {
@@ -51,13 +53,15 @@ declare namespace LocalJSX {
     }
     interface PtlSearchResult {
     }
-    interface PtlWidgetRecommendation {
-        "apiUrl"?: string;
+    interface PtlWidgetProducts {
+        "apiHost"?: string;
+        "limitProducts"?: string;
+        "widgetTitle"?: string;
     }
     interface IntrinsicElements {
         "ptl-search-input": PtlSearchInput;
         "ptl-search-result": PtlSearchResult;
-        "ptl-widget-recommendation": PtlWidgetRecommendation;
+        "ptl-widget-products": PtlWidgetProducts;
     }
 }
 export { LocalJSX as JSX };
@@ -66,7 +70,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "ptl-search-input": LocalJSX.PtlSearchInput & JSXBase.HTMLAttributes<HTMLPtlSearchInputElement>;
             "ptl-search-result": LocalJSX.PtlSearchResult & JSXBase.HTMLAttributes<HTMLPtlSearchResultElement>;
-            "ptl-widget-recommendation": LocalJSX.PtlWidgetRecommendation & JSXBase.HTMLAttributes<HTMLPtlWidgetRecommendationElement>;
+            "ptl-widget-products": LocalJSX.PtlWidgetProducts & JSXBase.HTMLAttributes<HTMLPtlWidgetProductsElement>;
         }
     }
 }

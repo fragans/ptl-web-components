@@ -29,3 +29,5 @@ npm publish --access public --otp=<code>
 
 ## Todo
 default state when search keyword is null
+@prop title widget rekomendasi
+@prop bg-color widget rekomendasi
