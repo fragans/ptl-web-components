@@ -1,40 +1,19 @@
-import { Component, h, Listen, State } from '@stencil/core';
+import { Component, Host, State, Prop,  h } from '@stencil/core';
 type product = {
   title: string,
   price: number,
   thumbnail: string
 }
-
 @Component({
-  tag: 'ptl-search-result',
-  styleUrl: 'ptl-search-result.css',
+  styleUrl: 'ptl-widget-recommendation.css',
+  tag: 'ptl-widget-recommendation',
   shadow: true,
 })
-export class PtlSearchResult {
+export class PtlWidgetRecommendation {
+  @Prop() apiUrl="https://dummyjson.com/products?limit=5"
   @State() products: product[]= []
   @State() emptyState: boolean = false
 
-  @Listen('fetchSearchApi',{target: 'document'})
-    getChangedValue(event: CustomEvent) {
-      const result = event.detail
-      console.log('total',result.total);
-      
-      if (result.total === 0) {
-        this.emptyState = true
-      } else {
-        this.products = result.products
-      }
-    }
-  templateEmptyState () {
-    return (
-      <div>
-        <h1 class="text-2xl text-center">
-          Search Not Found
-        </h1>
-        <p>try another keyword maybe :)</p>
-      </div>
-    )
-  }
   templateCards (items: product[]) {
     if (!items.length) {return} 
     return items.map( (item) => {
@@ -51,27 +30,37 @@ export class PtlSearchResult {
     )
   }
   templateTitle () {
-    const title = 'Hasil Pencarian'
+    if (!this.emptyState && this.products.length) { return }
     return (
       <div>
         <h2 class="underline capitalize font-bold text-xl text-primary">
-          { !this.emptyState ?'produk kami':  title}
+          hasil pencarian
         </h2>
       </div>
     )
   }
+  async componentWillLoad () {
+    
+    console.log(`fetching rekomendasi `);
+    let response = await fetch(`${this.apiUrl}`);
+    let json = await response.json();
+    this.products = json.products
+    console.log('done json:', this.products);
+  }
   
   render() {
+
     return (
-      <div>
+      <Host>
         <div>
-          { this.templateTitle() }
+          <h2 class="underline capitalize font-bold text-xl text-primary">
+            produk rekomendasi
+          </h2>
         </div>
         <div class="p-4 grid lg:grid-cols-5 auto-rows-auto grid-cols-2 gap-10">
-          
-          { this.emptyState ? this.templateEmptyState() :this.templateCards(this.products) }
+          { this.templateCards(this.products) }
         </div>
-      </div>
+      </Host>
     );
   }
 

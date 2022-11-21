@@ -13,7 +13,7 @@ export class PtlSearchInput {
 
   @Event({bubbles: true, composed: true}) fetchSearchApi: EventEmitter<JSON>;
   private async search(): Promise<void> {
-    
+    if (!this.searchInput.value) { return }
     const keyword = this.searchInput.value
     console.log(`search: ${keyword} `);
     let response = await fetch(`${this.apiUrl}${keyword}`);
