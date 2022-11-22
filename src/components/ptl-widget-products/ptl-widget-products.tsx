@@ -51,10 +51,15 @@ export class PtlWidgetProducts {
     if (this.limitProducts) {
       url += `?limit=${this.limitProducts}` 
     }
-    let response = await fetch(url);
-    let json = await response.json();
-    this.products = json.products
-    console.log('done json:', this.products);
+    try {
+      let response = await fetch(url);
+      let json = await response.json();
+      this.products = json.products
+      console.log('done json:', this.products);
+    } catch (err){
+      console.error(`err fetching ${this.widgetTitle} `);
+    }
+    
   }
   
   render() {

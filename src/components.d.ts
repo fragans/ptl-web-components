@@ -6,6 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface PtlImageGallery {
+        "activeImageRatio": number;
+        "images": string[];
+    }
     interface PtlSearchInput {
         "apiUrl": string;
     }
@@ -22,6 +26,12 @@ export interface PtlSearchInputCustomEvent<T> extends CustomEvent<T> {
     target: HTMLPtlSearchInputElement;
 }
 declare global {
+    interface HTMLPtlImageGalleryElement extends Components.PtlImageGallery, HTMLStencilElement {
+    }
+    var HTMLPtlImageGalleryElement: {
+        prototype: HTMLPtlImageGalleryElement;
+        new (): HTMLPtlImageGalleryElement;
+    };
     interface HTMLPtlSearchInputElement extends Components.PtlSearchInput, HTMLStencilElement {
     }
     var HTMLPtlSearchInputElement: {
@@ -41,12 +51,17 @@ declare global {
         new (): HTMLPtlWidgetProductsElement;
     };
     interface HTMLElementTagNameMap {
+        "ptl-image-gallery": HTMLPtlImageGalleryElement;
         "ptl-search-input": HTMLPtlSearchInputElement;
         "ptl-search-result": HTMLPtlSearchResultElement;
         "ptl-widget-products": HTMLPtlWidgetProductsElement;
     }
 }
 declare namespace LocalJSX {
+    interface PtlImageGallery {
+        "activeImageRatio"?: number;
+        "images"?: string[];
+    }
     interface PtlSearchInput {
         "apiUrl"?: string;
         "onFetchSearchApi"?: (event: PtlSearchInputCustomEvent<JSON>) => void;
@@ -59,6 +74,7 @@ declare namespace LocalJSX {
         "widgetTitle"?: string;
     }
     interface IntrinsicElements {
+        "ptl-image-gallery": PtlImageGallery;
         "ptl-search-input": PtlSearchInput;
         "ptl-search-result": PtlSearchResult;
         "ptl-widget-products": PtlWidgetProducts;
@@ -68,6 +84,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "ptl-image-gallery": LocalJSX.PtlImageGallery & JSXBase.HTMLAttributes<HTMLPtlImageGalleryElement>;
             "ptl-search-input": LocalJSX.PtlSearchInput & JSXBase.HTMLAttributes<HTMLPtlSearchInputElement>;
             "ptl-search-result": LocalJSX.PtlSearchResult & JSXBase.HTMLAttributes<HTMLPtlSearchResultElement>;
             "ptl-widget-products": LocalJSX.PtlWidgetProducts & JSXBase.HTMLAttributes<HTMLPtlWidgetProductsElement>;

@@ -1,0 +1,6 @@
+:host {
+  display: block;
+}
+.border-primary {
+  border-color: #D6AA09;
+}
