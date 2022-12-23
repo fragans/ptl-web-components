@@ -11,10 +11,15 @@
 </head>
 
 <body>
-  
-  <ptl-search-input></ptl-search-input>
-  <ptl-search-result></ptl-search-result>
+  <ptl-image-slider/>
+  <!-- <ptl-search-input></ptl-search-input> -->
+  <!-- <ptl-searchresult></ptl-search-result> -->
   <!-- <ptl-widget-recommendation></ptl-widget-recommendation> -->
+  <script>
+    var cmp = document.querySelector('ptl-image-slider');
+    // cmp.captions = ['pro 1', 'pro 2', 'pro 2']; // arr is the array you are want to pass
+    cmp.minHeight = '50vh'
+  </script>
 </body>
 
 </html>

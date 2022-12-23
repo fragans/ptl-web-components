@@ -10,6 +10,11 @@ export namespace Components {
         "activeImageRatio": number;
         "images": string[];
     }
+    interface PtlImageSlider {
+        "captions": string[];
+        "images": string[];
+        "minHeight": string;
+    }
     interface PtlSearchInput {
         "apiUrl": string;
     }
@@ -32,6 +37,12 @@ declare global {
         prototype: HTMLPtlImageGalleryElement;
         new (): HTMLPtlImageGalleryElement;
     };
+    interface HTMLPtlImageSliderElement extends Components.PtlImageSlider, HTMLStencilElement {
+    }
+    var HTMLPtlImageSliderElement: {
+        prototype: HTMLPtlImageSliderElement;
+        new (): HTMLPtlImageSliderElement;
+    };
     interface HTMLPtlSearchInputElement extends Components.PtlSearchInput, HTMLStencilElement {
     }
     var HTMLPtlSearchInputElement: {
@@ -52,6 +63,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "ptl-image-gallery": HTMLPtlImageGalleryElement;
+        "ptl-image-slider": HTMLPtlImageSliderElement;
         "ptl-search-input": HTMLPtlSearchInputElement;
         "ptl-search-result": HTMLPtlSearchResultElement;
         "ptl-widget-products": HTMLPtlWidgetProductsElement;
@@ -61,6 +73,11 @@ declare namespace LocalJSX {
     interface PtlImageGallery {
         "activeImageRatio"?: number;
         "images"?: string[];
+    }
+    interface PtlImageSlider {
+        "captions"?: string[];
+        "images"?: string[];
+        "minHeight"?: string;
     }
     interface PtlSearchInput {
         "apiUrl"?: string;
@@ -75,6 +92,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "ptl-image-gallery": PtlImageGallery;
+        "ptl-image-slider": PtlImageSlider;
         "ptl-search-input": PtlSearchInput;
         "ptl-search-result": PtlSearchResult;
         "ptl-widget-products": PtlWidgetProducts;
@@ -85,6 +103,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "ptl-image-gallery": LocalJSX.PtlImageGallery & JSXBase.HTMLAttributes<HTMLPtlImageGalleryElement>;
+            "ptl-image-slider": LocalJSX.PtlImageSlider & JSXBase.HTMLAttributes<HTMLPtlImageSliderElement>;
             "ptl-search-input": LocalJSX.PtlSearchInput & JSXBase.HTMLAttributes<HTMLPtlSearchInputElement>;
             "ptl-search-result": LocalJSX.PtlSearchResult & JSXBase.HTMLAttributes<HTMLPtlSearchResultElement>;
             "ptl-widget-products": LocalJSX.PtlWidgetProducts & JSXBase.HTMLAttributes<HTMLPtlWidgetProductsElement>;
